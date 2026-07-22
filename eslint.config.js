@@ -24,4 +24,12 @@ export default defineConfig([
       globals: globals.vitest,
     },
   },
+  {
+    // Node-context files: build/test configs and utility scripts use
+    // process.env etc. — browser globals don't apply here.
+    files: ['*.config.js', 'scripts/**/*.mjs'],
+    languageOptions: {
+      globals: globals.node,
+    },
+  },
 ])
